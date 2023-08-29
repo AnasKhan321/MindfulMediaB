@@ -136,11 +136,11 @@ MEDIA_URL = '/media/'
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_HEADERS = [
-    'auth',  # Add more headers if needed
+    'auth', 
     'content-type',
 ]
 
-# For testing purposes (allow all headers)
+
 CORS_ALLOW_ALL_HEADERS = True
 
 CORS_ALLOWED_ORIGINS = [
