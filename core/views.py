@@ -49,26 +49,14 @@ def createuser(request):
 def handleSignup(request):
     if request.method == 'POST':
         bytes_data = request.body
-
-        # Convert bytes to string
-        string_data = bytes_data.decode('utf-8')  # Use the appropriate encoding
-
-        # Parse the string as JSON
+        string_data = bytes_data.decode('utf-8')  
         json_data = json.loads(string_data)
-
-        # Now you have a Python dictionary containing the JSON data
-        print(json_data.get('fname'))
-        print(request.body)
-
         firstName = json_data.get('fname')
         lastName = json_data.get('lname')
         email = json_data.get('email')
         pass1 = json_data.get('pass1')
 
         username = firstName + lastName
-
-        print(username, firstName, lastName, email, pass1)
-
         if len(pass1) < 8:
             return JsonResponse({"error": "Password is To Short   "})
 
@@ -98,21 +86,14 @@ def getuser(request):
 def handleLogin(request):
     if request.method == 'POST':
         bytes_data = request.body
-
-        # Convert bytes to string
-        string_data = bytes_data.decode('utf-8')  # Use the appropriate encoding
-
-        # Parse the string as JSON
+        string_data = bytes_data.decode('utf-8')  
         json_data = json.loads(string_data)
 
-        # Now you have a Python dictionary containing the JSON data
-        print(json_data.get('fname'))
-        print(request.body)
 
         username = json_data.get('loginusername')
         password = json_data.get('loginpass')
 
-        print(username, password)
+    
         user1 = authenticate(username=username, password=password)
 
         if user1 is not None:
@@ -133,11 +114,7 @@ def handleLogin(request):
 def takeShipment(request):
     if request.method == 'POST':
         bytes_data = request.body
-
-        # Convert bytes to string
-        string_data = bytes_data.decode('utf-8')  # Use the appropriate encoding
-
-        # Parse the string as JSON
+        string_data = bytes_data.decode('utf-8') 
         json_data = json.loads(string_data)
         vs = json_data.get('auth')
 
@@ -155,11 +132,7 @@ def takeShipment(request):
 def takeOrder(request):
     if request.method == 'POST':
         bytes_data = request.body
-
-        # Convert bytes to string
         string_data = bytes_data.decode('utf-8')  # Use the appropriate encoding
-
-        # Parse the string as JSON
         json_data = json.loads(string_data)
         vs = json_data.get('auth')
         item = json_data.get('item')
